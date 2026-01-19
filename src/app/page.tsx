@@ -1,12 +1,13 @@
-import MainLayout from "@/layouts/MainLayout";
-import StatCard from "@/components/ui/StatCard";
-import TodayClasses from "@/components/ui/TodayClasses";
-import PerformanceChart from "@/components/ui/PerformanceChart";
-import AlertsNotifications from "@/components/ui/AlertsNotifications";
-import StudentEngagementTrends from "@/components/ui/StudentEngagementTrends";
-import UpcomingExams from "@/components/ui/UpcomingExams";
-import MarkAttendance from "@/components/ui/MarkAttendance";
-import TodaysMeetings from "@/components/ui/TodaysMeetings";
+import MainLayout from '@/layouts/MainLayout';
+import StatCard from '@/components/ui/StatCard';
+import TodayClasses from '@/components/ui/TodayClasses';
+import PerformanceChart from '@/components/ui/PerformanceChart';
+import AlertsNotifications from '@/components/ui/AlertsNotifications';
+import StudentEngagementTrends from '@/components/ui/StudentEngagementTrends';
+import UpcomingExams from '@/components/ui/UpcomingExams';
+import MarkAttendance from '@/components/ui/MarkAttendance';
+import TodaysMeetings from '@/components/ui/TodaysMeetings';
+
 import {
   dashboardStats,
   todayClassesData,
@@ -16,7 +17,7 @@ import {
   upcomingExamsData,
   todaysMeetingsData,
   markAttendanceData,
-} from "@/data/dummyData";
+} from '@/data/dummyData';
 
 export default function HomePage() {
   return (
@@ -64,3 +65,90 @@ export default function HomePage() {
     </MainLayout>
   );
 }
+<<<<<<< HEAD
+import MainLayout from "@/layouts/MainLayout";
+import StatCard from "@/components/ui/StatCard";
+import TodayClasses from "@/components/ui/TodayClasses";
+import PerformanceChart from "@/components/ui/PerformanceChart";
+import AlertsNotifications from "@/components/ui/AlertsNotifications";
+import StudentEngagementTrends from "@/components/ui/StudentEngagementTrends";
+import UpcomingExams from "@/components/ui/UpcomingExams";
+import MarkAttendance from "@/components/ui/MarkAttendance";
+import TodaysMeetings from "@/components/ui/TodaysMeetings";
+import {
+  dashboardStats,
+  todayClassesData,
+  performanceChartData,
+  alertsData,
+  engagementTrendsData,
+  upcomingExamsData,
+  todaysMeetingsData,
+  markAttendanceData,
+} from "@/data/dummyData";
+=======
+import MainLayout from '@/layouts/MainLayout';
+import StatCard from '@/components/ui/StatCard';
+import TodayClasses from '@/components/ui/TodayClasses';
+import PerformanceChart from '@/components/ui/PerformanceChart';
+import AlertsNotifications from '@/components/ui/AlertsNotifications';
+import StudentEngagementTrends from '@/components/ui/StudentEngagementTrends';
+import { dashboardStats, todayClassesData, performanceChartData, alertsData, engagementTrendsData } from '@/data/dummyData';
+>>>>>>> e59dbd451c08f1e3dcd54cca39bfe32dcf8deedc
+
+export default function HomePage() {
+  return (
+    <MainLayout>
+      <div className="p-8 w-full">
+        {/* Stats Section */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          {dashboardStats.map((stat) => (
+            <StatCard
+              key={stat.id}
+              title={stat.title}
+              value={stat.value}
+              icon={stat.icon}
+              change={stat.change}
+            />
+          ))}
+        </div>
+
+        {/* Today's Classes Section */}
+        <TodayClasses data={todayClassesData} />
+
+        {/* Performance Chart & Alerts Section - 70% + 30% layout */}
+        <div className="mt-8 grid grid-cols-12 gap-6">
+          <div className="col-span-8">
+            <PerformanceChart data={performanceChartData} />
+<<<<<<< HEAD
+
+            <div className="mt-6">
+              <MarkAttendance data={markAttendanceData} />
+            </div>
+
+=======
+>>>>>>> e59dbd451c08f1e3dcd54cca39bfe32dcf8deedc
+            {/* Student Engagement Trends Section - Same spacing as column gap */}
+            <div className="mt-6">
+              <StudentEngagementTrends data={engagementTrendsData} />
+            </div>
+          </div>
+          <div className="col-span-4">
+<<<<<<< HEAD
+            <div className="space-y-6">
+              <AlertsNotifications data={alertsData} />
+              <UpcomingExams data={upcomingExamsData} />
+              <TodaysMeetings data={todaysMeetingsData} />
+            </div>
+=======
+            <AlertsNotifications data={alertsData} />
+>>>>>>> e59dbd451c08f1e3dcd54cca39bfe32dcf8deedc
+          </div>
+        </div>
+      </div>
+    </MainLayout>
+  );
+}
+<<<<<<< HEAD
+=======
+
+>>>>>>> e59dbd451c08f1e3dcd54cca39bfe32dcf8deedc
