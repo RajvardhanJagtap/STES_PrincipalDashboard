@@ -46,8 +46,43 @@
   }
 }
 
-/* Custom component styles */
+/* Typography System - Consistent font sizes */
 @layer components {
+  /* Section Headings - 18px / font-bold */
+  .heading-lg {
+    @apply text-lg font-bold text-gray-900;
+  }
+
+  /* Component Titles - 16px / font-semibold */
+  .heading-md {
+    @apply text-base font-semibold text-gray-900;
+  }
+
+  /* Subheadings/Meta - 14px / font-semibold */
+  .heading-sm {
+    @apply text-sm font-semibold text-gray-900;
+  }
+
+  /* Body Text - 14px / regular */
+  .body-text {
+    @apply text-sm text-gray-600;
+  }
+
+  /* Small Text / Caption - 12px / regular */
+  .caption-text {
+    @apply text-xs text-gray-600;
+  }
+
+  /* Label Text - 12px / semibold */
+  .label-text {
+    @apply text-xs font-semibold text-gray-700;
+  }
+
+  /* Muted Text - 12px / regular, lighter color */
+  .muted-text {
+    @apply text-xs text-gray-500;
+  }
+
   .card {
     @apply bg-white rounded-lg border border-gray-200 shadow-sm;
   }

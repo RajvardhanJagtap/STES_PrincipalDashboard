@@ -39,8 +39,8 @@ const UpcomingExams: React.FC<UpcomingExamsProps> = ({ data }) => {
     <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
       <div className="flex items-start justify-between mb-5">
         <div>
-          <h2 className="text-lg font-bold text-gray-900">Upcoming Exams</h2>
-          <p className="text-sm text-gray-600">Scheduled examinations</p>
+          <h2 className="heading-lg">Upcoming Exams</h2>
+          <p className="body-text">Scheduled examinations</p>
         </div>
         <button className="bg-white border border-gray-200 text-gray-900 text-sm font-semibold px-4 py-2 rounded-xl">
           {data.total} Exams

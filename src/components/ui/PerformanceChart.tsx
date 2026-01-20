@@ -35,8 +35,8 @@ const PerformanceChart: React.FC<PerformanceChartProps> = ({ data }) => {
       {/* Header Section */}
       <div className="flex items-start justify-between mb-8">
         <div>
-          <h2 className="text-xl font-bold text-gray-900 mb-1">{data.title}</h2>
-          <p className="text-gray-500 text-xs">{data.subtitle}</p>
+          <h2 className="heading-lg mb-1">{data.title}</h2>
+          <p className="muted-text">{data.subtitle}</p>
         </div>
         <div className="flex items-center gap-5 text-xs">
           <div className="flex items-center gap-2">

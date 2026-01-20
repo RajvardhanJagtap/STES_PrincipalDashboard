@@ -44,10 +44,10 @@ const StudentEngagementTrends: React.FC<StudentEngagementTrendsProps> = ({ data 
       {/* Header with Title and Toggle */}
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-2">
-          <h2 className="text-lg font-bold text-gray-900">Student Engagement Trends</h2>
+          <h2 className="heading-lg">Student Engagement Trends</h2>
           <div className="flex items-center gap-1.5 bg-blue-50 px-2 py-1 rounded-md">
             <TrendingUp size={16} className="text-blue-700" />
-            <span className="text-sm font-semibold text-blue-800">+{currentData.growth}%</span>
+            <span className="label-text text-blue-800">+{currentData.growth}%</span>
           </div>
         </div>
 

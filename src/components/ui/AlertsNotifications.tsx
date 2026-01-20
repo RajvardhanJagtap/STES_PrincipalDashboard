@@ -71,8 +71,8 @@ const AlertsNotifications: React.FC<AlertsNotificationsProps> = ({ data }) => {
             <Bell size={20} className="text-gray-600" />
           </div>
           <div>
-            <h2 className="text-lg font-bold text-gray-900">Alerts & Notifications</h2>
-            <p className="text-sm text-gray-600">Important updates</p>
+            <h2 className="heading-lg">Alerts & Notifications</h2>
+            <p className="body-text">Important updates</p>
           </div>
         </div>
 
@@ -104,9 +104,9 @@ const AlertsNotifications: React.FC<AlertsNotificationsProps> = ({ data }) => {
 
                 {/* Content */}
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-bold text-gray-900 text-sm mb-1">{alert.title}</h3>
-                  <p className="text-gray-700 text-sm mb-2 line-clamp-2">{alert.message}</p>
-                  <p className="text-xs text-gray-600 mb-3">From: {alert.from}</p>
+                  <h3 className="heading-sm mb-1">{alert.title}</h3>
+                  <p className="body-text mb-2 line-clamp-2">{alert.message}</p>
+                  <p className="caption-text mb-3">From: {alert.from}</p>
 
                   {/* Footer: Badge + Time */}
                   <div className="flex items-center justify-between gap-2">

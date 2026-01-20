@@ -20,9 +20,15 @@ import {
 const TodaysMeetings: React.FC<TodaysMeetingsProps> = ({ data }) => {
   const [openMeetingId, setOpenMeetingId] = useState<string | null>(null);
 
+  // Combine today's and upcoming meetings
+  const allMeetings = useMemo(
+    () => [...data.meetings, ...data.upcomingMeetings],
+    [data.meetings, data.upcomingMeetings],
+  );
+
   const selectedMeeting = useMemo(
-    () => data.meetings.find((m) => m.id === openMeetingId) ?? null,
-    [data.meetings, openMeetingId],
+    () => allMeetings.find((m) => m.id === openMeetingId) ?? null,
+    [allMeetings, openMeetingId],
   );
 
   useEffect(() => {
@@ -58,63 +64,89 @@ const TodaysMeetings: React.FC<TodaysMeetingsProps> = ({ data }) => {
   const headerClass =
     selectedMeeting?.headerVariant === "blue" ? "bg-blue-600" : "bg-[#1e3a8a]";
 
-  return (
-    <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
-      <div className="flex items-start justify-between mb-5">
-        <div>
-          <h2 className="text-lg font-bold text-gray-900">
-            Today&apos;s Meetings
-          </h2>
-          <p className="text-sm text-gray-600">Scheduled for today</p>
-        </div>
-        <button className="bg-white border border-gray-200 text-gray-900 text-sm font-semibold px-4 py-2 rounded-xl">
-          {data.total} Meetings
-        </button>
-      </div>
+  const renderMeetingCard = (meeting: typeof data.meetings[0]) => (
+    <button
+      key={meeting.id}
+      type="button"
+      onClick={() => setOpenMeetingId(meeting.id)}
+      className="group w-full text-left bg-white border-2 border-gray-200 rounded-2xl p-4 transition-all hover:border-blue-700 hover:shadow-sm"
+    >
+      <div className="flex items-start justify-between gap-3">
+        <div className="flex items-start gap-4 min-w-0">
+          <div className="w-10 h-10 rounded-xl border-2 border-gray-200 flex items-center justify-center flex-shrink-0">
+            {getMeetingIcon(meeting.icon)}
+          </div>
 
-      <div className="space-y-4">
-        {data.meetings.map((meeting) => (
-          <button
-            key={meeting.id}
-            type="button"
-            onClick={() => setOpenMeetingId(meeting.id)}
-            className="group w-full text-left bg-white border-2 border-gray-200 rounded-2xl p-4 transition-all hover:border-blue-700 hover:shadow-sm"
-          >
-            <div className="flex items-start justify-between gap-3">
-              <div className="flex items-start gap-4 min-w-0">
-                <div className="w-10 h-10 rounded-xl border-2 border-gray-200 flex items-center justify-center flex-shrink-0">
-                  {getMeetingIcon(meeting.icon)}
-                </div>
-
-                <div className="min-w-0">
-                  <div className="flex items-center justify-between gap-2">
-                    <h3 className="font-bold text-gray-900 text-sm truncate group-hover:text-blue-700 transition-colors">
-                      {meeting.title}
-                    </h3>
-                  </div>
-
-                  <div className="mt-2 space-y-1.5 text-xs text-gray-700">
-                    <div className="flex items-center gap-2">
-                      <Clock size={14} className="text-gray-500" />
-                      <span>{meeting.time}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <MapPin size={14} className="text-gray-500" />
-                      <span className="truncate">{meeting.location}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Users size={14} className="text-gray-500" />
-                      <span>{meeting.participants} participants</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <ChevronRight size={18} className="text-gray-400 flex-shrink-0" />
+          <div className="min-w-0">
+            <div className="flex items-center justify-between gap-2">
+              <h3 className="font-bold text-gray-900 text-sm truncate group-hover:text-blue-700 transition-colors">
+                {meeting.title}
+              </h3>
             </div>
-          </button>
-        ))}
+
+            <div className="mt-2 space-y-1.5 text-xs text-gray-700">
+              <div className="flex items-center gap-2">
+                <Clock size={14} className="text-gray-500" />
+                <span>{meeting.time}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <MapPin size={14} className="text-gray-500" />
+                <span className="truncate">{meeting.location}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Users size={14} className="text-gray-500" />
+                <span>{meeting.participants} participants</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <ChevronRight size={18} className="text-gray-400 flex-shrink-0" />
       </div>
+    </button>
+  );
+
+  return (
+    <div className="space-y-6">
+      {/* Today's Meetings Section */}
+      <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
+        <div className="flex items-start justify-between mb-5">
+          <div>
+            <h2 className="text-lg font-bold text-gray-900">
+              Today&apos;s Meetings
+            </h2>
+            <p className="text-sm text-gray-600">Scheduled for today</p>
+          </div>
+          <button className="bg-white border border-gray-200 text-gray-900 text-sm font-semibold px-4 py-2 rounded-xl">
+            {data.meetings.length} Meetings
+          </button>
+        </div>
+
+        <div className="space-y-4">
+          {data.meetings.map((meeting) => renderMeetingCard(meeting))}
+        </div>
+      </div>
+
+      {/* Upcoming Meetings Section */}
+      {data.upcomingMeetings.length > 0 && (
+        <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
+          <div className="flex items-start justify-between mb-5">
+            <div>
+              <h2 className="text-lg font-bold text-gray-900">
+                Upcoming Meetings
+              </h2>
+              <p className="text-sm text-gray-600">Next scheduled meetings</p>
+            </div>
+            <button className="bg-white border border-gray-200 text-gray-900 text-sm font-semibold px-4 py-2 rounded-xl">
+              {Math.min(data.upcomingMeetings.length, 3)} Meetings
+            </button>
+          </div>
+
+          <div className="space-y-4">
+            {data.upcomingMeetings.slice(0, 3).map((meeting) => renderMeetingCard(meeting))}
+          </div>
+        </div>
+      )}
 
       {/* Meeting Details Modal */}
       {selectedMeeting && (

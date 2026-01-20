@@ -6,7 +6,7 @@ const StatCard: React.FC<StatCardProps> = ({ title, value, icon, change }) => {
     <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md hover:border-blue-200 transition-all duration-200 cursor-pointer">
       <div className="flex items-start justify-between mb-4">
         <div className="flex-1">
-          <p className="text-gray-600 text-xs mb-2">{title}</p>
+          <p className="caption-text mb-2">{title}</p>
           <p className="text-2xl font-bold text-gray-900">{value}</p>
         </div>
         <div className="text-blue-600 flex-shrink-0">

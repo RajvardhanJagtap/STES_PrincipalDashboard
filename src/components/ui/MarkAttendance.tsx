@@ -116,8 +116,8 @@ const MarkAttendance: React.FC<MarkAttendanceProps> = ({ data }) => {
     <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
       <div className="flex items-start justify-between gap-4 mb-6">
         <div>
-          <h2 className="text-xl font-bold text-gray-900">Mark Attendance</h2>
-          <p className="text-sm text-gray-600">
+          <h2 className="heading-lg">Mark Attendance</h2>
+          <p className="body-text">
             Select class and mark student attendance
           </p>
         </div>

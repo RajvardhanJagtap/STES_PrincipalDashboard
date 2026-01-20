@@ -131,319 +131,80 @@ export interface PerformanceChartProps {
   data: PerformanceChartData;
 }
 
-// Upcoming Exams types
-export interface UpcomingExam {
-  id: string;
-  day: number;
-  month: string; // e.g. 'JAN'
-  title: string;
-  courseCode: string;
-  time: string;
-  dateLabel: string; // e.g. '15 Jan 2026'
-  room: string;
-  duration: string;
-  totalMarks: number;
-  topicsCovered: string[];
-  instructions: string;
-  enrolledStudents: number;
-}
-
-export interface UpcomingExamsData {
-  total: number;
-  exams: UpcomingExam[];
-}
-
-export interface UpcomingExamsProps {
-  data: UpcomingExamsData;
-}
+// Alerts & Notifications types - DEPRECATED, use types/alerts.ts instead
+// export type AlertType = 'urgent' | 'important' | 'info';
+// export interface Alert {...}
+// See: /src/types/alerts.ts for the new backend-ready alert types
 
 // Today's Meetings types
 export interface TodaysMeeting {
   id: string;
   title: string;
-  dateLabel: string; // e.g. 'Jan 15, 2026'
+  dateLabel: string;
   time: string;
   duration: string;
   location: string;
   participants: number;
   organizedBy: string;
   agenda: string[];
+  icon?: string;
+  headerVariant?: string;
   meetingLink?: string;
-  icon?: 'faculty' | 'project' | 'online' | 'general';
-  headerVariant?: 'navy' | 'blue';
 }
 
 export interface TodaysMeetingsData {
   total: number;
   meetings: TodaysMeeting[];
+  upcomingMeetings: TodaysMeeting[];
 }
 
 export interface TodaysMeetingsProps {
   data: TodaysMeetingsData;
 }
 
-// Mark Attendance types
-export type AttendanceStatus = 'present' | 'absent';
-
-export interface AttendanceStudent {
-  id: string;
-  name: string;
-  rollNumber: string;
-  initials: string;
-}
-
-export interface AttendanceClass {
-  id: string;
+// Leave Management types
+export interface LeaveBalance {
+  type: 'casual' | 'medical' | 'earned';
   label: string;
-  meta: string;
-  students: AttendanceStudent[];
+  remaining: number;
+  total: number;
+  used: number;
 }
 
-export interface MarkAttendanceData {
-  classes: AttendanceClass[];
-}
-
-export interface MarkAttendanceProps {
-  data: MarkAttendanceData;
-}
-
-// Alerts & Notifications types - DEPRECATED, use types/alerts.ts instead
-// export type AlertType = 'urgent' | 'important' | 'info';
-// export interface Alert {...}
-// See: /src/types/alerts.ts for the new backend-ready alert types
-// User related types
-export interface User {
+export interface LeaveApplication {
   id: string;
-  name: string;
-  email: string;
-  role: string;
-  avatar?: string;
-  initials?: string;
+  type: 'casual' | 'medical' | 'earned';
+  dateRange: string;
+  duration: number;
+  status: 'approved' | 'pending' | 'rejected';
+  reason: string;
+  authority: string;
+  appliedDate: string;
 }
 
-// Notification types
-export interface Notification {
+export interface LeaveManagementData {
+  balances: LeaveBalance[];
+  applications: LeaveApplication[];
+}
+
+export interface LeaveManagementProps {
+  data: LeaveManagementData;
+}
+
+// Recent Activity types
+export interface ActivityItem {
   id: string;
+  type: 'submission' | 'attendance' | 'message' | 'deadline' | 'grading';
   title: string;
-  message: string;
-  timestamp: Date;
-  read: boolean;
-<<<<<<< HEAD
-  type: "info" | "warning" | "success" | "error";
-=======
-  type: 'info' | 'warning' | 'success' | 'error';
->>>>>>> e59dbd451c08f1e3dcd54cca39bfe32dcf8deedc
-}
-
-// Search result types
-export interface SearchResult {
-  id: string;
-  title: string;
-<<<<<<< HEAD
-  type: "resource" | "student" | "course";
-=======
-  type: 'resource' | 'student' | 'course';
->>>>>>> e59dbd451c08f1e3dcd54cca39bfe32dcf8deedc
-  description?: string;
-}
-
-// Component props types
-export interface HeaderProps {
-  user?: User;
-}
-
-export interface AvatarProps {
-  name: string;
-  src?: string;
-<<<<<<< HEAD
-  size?: "sm" | "md" | "lg";
-=======
-  size?: 'sm' | 'md' | 'lg';
->>>>>>> e59dbd451c08f1e3dcd54cca39bfe32dcf8deedc
-  className?: string;
-}
-
-export interface SearchBarProps {
-  placeholder?: string;
-  onSearch?: (query: string) => void;
-}
-
-export interface IconButtonProps {
-  icon: React.ReactNode;
-  onClick?: () => void;
-  badge?: number;
-  className?: string;
-}
-
-// Sidebar navigation types
-export interface NavItem {
-  id: string;
-  label: string;
-  icon: React.ReactNode;
-  href: string;
-  color?: string;
-}
-
-export interface SidebarProps {
-  className?: string;
-}
-
-// Dashboard Stats types
-export interface StatCard {
-  id: string;
-  title: string;
-  value: string | number;
-  icon: React.ReactNode;
-  change?: {
-    value: number;
-    isPositive: boolean;
-  };
-}
-
-// Class/Course types
-<<<<<<< HEAD
-export type ClassStatus = "completed" | "ongoing" | "upcoming";
-=======
-export type ClassStatus = 'completed' | 'ongoing' | 'upcoming';
->>>>>>> e59dbd451c08f1e3dcd54cca39bfe32dcf8deedc
-
-export interface ClassSession {
-  id: string;
-  name: string;
-  code: string;
-  status: ClassStatus;
-  time: string;
-  location: string;
-  studentCount: number;
+  description: string;
+  timestamp: string;
   icon?: React.ReactNode;
 }
 
-export interface TodayClassesData {
-  date: string;
-  totalClasses: number;
-  classes: ClassSession[];
+export interface RecentActivityData {
+  activities: ActivityItem[];
 }
 
-export interface StatCardProps {
-  title: string;
-  value: string | number;
-  icon: React.ReactNode;
-  change?: {
-    value: number;
-    isPositive: boolean;
-  };
+export interface RecentActivityProps {
+  data: RecentActivityData;
 }
-
-export interface ClassCardProps {
-  session: ClassSession;
-}
-
-export interface TodayClassesProps {
-  data: TodayClassesData;
-}
-
-// Performance Chart types
-export interface ChartDataPoint {
-  day: string;
-  attendance: number;
-  engagement: number;
-  assignments: number;
-}
-
-export interface PerformanceChartData {
-  title: string;
-  subtitle: string;
-  data: ChartDataPoint[];
-}
-
-export interface PerformanceChartProps {
-  data: PerformanceChartData;
-}
-
-<<<<<<< HEAD
-// Upcoming Exams types
-export interface UpcomingExam {
-  id: string;
-  day: number;
-  month: string; // e.g. 'JAN'
-  title: string;
-  courseCode: string;
-  time: string;
-  dateLabel: string; // e.g. '15 Jan 2026'
-  room: string;
-  duration: string;
-  totalMarks: number;
-  topicsCovered: string[];
-  instructions: string;
-  enrolledStudents: number;
-}
-
-export interface UpcomingExamsData {
-  total: number;
-  exams: UpcomingExam[];
-}
-
-export interface UpcomingExamsProps {
-  data: UpcomingExamsData;
-}
-
-// Today's Meetings types
-export interface TodaysMeeting {
-  id: string;
-  title: string;
-  dateLabel: string; // e.g. 'Jan 15, 2026'
-  time: string;
-  duration: string;
-  location: string;
-  participants: number;
-  organizedBy: string;
-  agenda: string[];
-  meetingLink?: string;
-  icon?: "faculty" | "project" | "online" | "general";
-  headerVariant?: "navy" | "blue";
-}
-
-export interface TodaysMeetingsData {
-  total: number;
-  meetings: TodaysMeeting[];
-}
-
-export interface TodaysMeetingsProps {
-  data: TodaysMeetingsData;
-}
-
-// Mark Attendance types
-export type AttendanceStatus = "present" | "absent";
-
-export interface AttendanceStudent {
-  id: string;
-  name: string;
-  rollNumber: string;
-  initials: string;
-}
-
-export interface AttendanceClass {
-  id: string;
-  label: string;
-  meta: string;
-  students: AttendanceStudent[];
-}
-
-export interface MarkAttendanceData {
-  classes: AttendanceClass[];
-}
-
-export interface MarkAttendanceProps {
-  data: MarkAttendanceData;
-}
-
-=======
->>>>>>> e59dbd451c08f1e3dcd54cca39bfe32dcf8deedc
-// Alerts & Notifications types - DEPRECATED, use types/alerts.ts instead
-// export type AlertType = 'urgent' | 'important' | 'info';
-// export interface Alert {...}
-// See: /src/types/alerts.ts for the new backend-ready alert types
-<<<<<<< HEAD
-=======
-
->>>>>>> e59dbd451c08f1e3dcd54cca39bfe32dcf8deedc

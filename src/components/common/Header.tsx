@@ -74,8 +74,8 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
             </svg>
           </div>
           <div className="flex flex-col">
-            <h1 className="text-lg font-bold text-gray-900">Lecturer</h1>
-            <p className="text-xs text-gray-500">Dashboard</p>
+            <h1 className="heading-md">Lecturer</h1>
+            <p className="muted-text">Dashboard</p>
           </div>
         </div>
 
@@ -141,10 +141,10 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
             border-gray-200
           ">
             <div className="text-right hidden sm:block">
-              <p className="text-sm font-semibold text-gray-900">
+              <p className="heading-sm">
                 {user?.name || 'User'}
               </p>
-              <p className="text-xs text-gray-500">
+              <p className="muted-text">
                 {user?.role || 'Role'}
               </p>
             </div>
