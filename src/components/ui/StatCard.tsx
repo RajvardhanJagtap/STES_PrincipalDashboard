@@ -16,22 +16,6 @@ const StatCard: React.FC<StatCardProps> = ({ title, value, icon, change }) => {
           {icon}
         </div>
       </div>
-      
-      {change && (
-        <div className="relative z-10 flex items-center gap-2 pt-2 border-t border-gray-100">
-          <span className={`
-            px-3 py-1 rounded-full text-xs font-semibold inline-flex items-center gap-1
-            ${change.isPositive
-              ? 'bg-emerald-100/80 text-emerald-700'
-              : 'bg-rose-100/80 text-rose-700'
-            }
-          `}>
-            <span>{change.isPositive ? '↑' : '↓'}</span>
-            {Math.abs(change.value)}%
-          </span>
-          <span className="text-xs text-gray-500">vs last month</span>
-        </div>
-      )}
     </div>
   );
 };

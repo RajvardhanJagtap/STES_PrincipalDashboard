@@ -8,6 +8,7 @@ export interface TimetableSession {
   moduleName: string;
   location: string;
   type: 'lecture' | 'lab' | 'tutorial';
+  studentCount?: number;
 }
 
 export interface TimeSlot {
@@ -118,6 +119,7 @@ export function convertSessionToClassCard(
     status: status as ClassStatus,
     time: timeSlot.label,
     location: session.location,
+    studentCount: session.studentCount ?? 0,
     type: session.type,
   };
 }

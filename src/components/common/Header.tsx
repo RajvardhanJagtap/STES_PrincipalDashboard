@@ -3,7 +3,6 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
 import Image from 'next/image';
 import { HeaderProps } from '@/types';
-import SearchBar from '@/components/ui/SearchBar';
 import IconButton from '@/components/ui/IconButton';
 import Avatar from '@/components/ui/Avatar';
 import { User, Settings, HelpCircle, LogOut, Eye, EyeOff, X, Menu } from 'lucide-react';
@@ -98,10 +97,6 @@ const Header: React.FC<HeaderProps> = ({ user: initialUser, onToggleSidebar }) =
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
-
-  const handleSearch = (query: string) => {
-    console.log('Searching for:', query);
-  };
 
   const handleNotificationClick = () => {
     setNotificationsOpen((prev) => !prev);
@@ -227,17 +222,13 @@ const Header: React.FC<HeaderProps> = ({ user: initialUser, onToggleSidebar }) =
             </h1>
           </div>
 
-          {/* Center Section - Search Bar + Dropdowns */}
-          <div className="flex-1 max-w-3xl hidden lg:flex items-center gap-3 mx-4">
-            <div className="flex-1">
-              <SearchBar 
-                placeholder="Search resources, students, courses..."
-                onSearch={handleSearch}
-              />
-            </div>
+          {/* Center - Spacer */}
+          <div className="flex-1"></div>
 
+          {/* Right Section - Dropdowns, Icons & User */}
+          <div className="flex items-center gap-3 shrink-0">
             {/* Academic Year Dropdown */}
-            <div ref={yearDropdownRef} className="relative">
+            <div ref={yearDropdownRef} className="relative hidden lg:block">
               <button
                 onClick={() => setYearDropdownOpen(!yearDropdownOpen)}
                 className="px-4 py-2 bg-white border border-gray-200 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors flex items-center gap-2 min-w-[140px] justify-between"
@@ -287,7 +278,7 @@ const Header: React.FC<HeaderProps> = ({ user: initialUser, onToggleSidebar }) =
             </div>
 
             {/* Semester Dropdown */}
-            <div ref={semesterDropdownRef} className="relative">
+            <div ref={semesterDropdownRef} className="relative hidden lg:block">
               <button
                 onClick={() => setSemesterDropdownOpen(!semesterDropdownOpen)}
                 className="px-4 py-2 bg-white border border-gray-200 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors flex items-center gap-2 min-w-[120px] justify-between"
@@ -335,10 +326,6 @@ const Header: React.FC<HeaderProps> = ({ user: initialUser, onToggleSidebar }) =
                 </div>
               )}
             </div>
-          </div>
-
-          {/* Right Section - Icons & User */}
-          <div className="flex items-center gap-2 shrink-0">
             {/* Notification Icon + Dropdown */}
             <div ref={notificationsRef} className="relative">
               <IconButton
