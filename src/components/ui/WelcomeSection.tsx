@@ -33,7 +33,7 @@ const WelcomeSection: React.FC<WelcomeSectionProps> = ({
         </h1>
 
         <p className="text-sm text-gray-500 font-normal mb-0 leading-relaxed max-w-4xl">
-          Here's what's happening with your academic journey today.
+          Here's what's happening with your teaching today.
         </p>
       </div>
     </div>

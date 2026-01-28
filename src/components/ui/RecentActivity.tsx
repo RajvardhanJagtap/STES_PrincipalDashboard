@@ -3,13 +3,29 @@
 import React, { useState } from "react";
 import { RecentActivityProps, ActivityItem } from "@/types";
 import {
-  FileText,
-  CheckSquare,
-  MessageSquare,
-  AlertCircle,
-  CheckCircle2,
+  ChevronRight,
   X,
 } from "lucide-react";
+
+// Custom circle checkmark icon
+const CircleCheck = ({ size = 18, className = "text-gray-400" }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    {/* Complete circle */}
+    <circle cx="12" cy="12" r="10" />
+    {/* Checkmark */}
+    <polyline points="10 14 12 16 18 8" />
+  </svg>
+);
 
 const RecentActivity: React.FC<RecentActivityProps> = ({ data }) => {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
@@ -18,21 +34,7 @@ const RecentActivity: React.FC<RecentActivityProps> = ({ data }) => {
   );
 
   const getActivityIcon = (type: string) => {
-    const iconProps = { size: 18, className: "text-primary-500" };
-    switch (type) {
-      case "submission":
-        return <FileText {...iconProps} className="text-blue-600" />;
-      case "attendance":
-        return <CheckSquare {...iconProps} className="text-blue-600" />;
-      case "message":
-        return <MessageSquare {...iconProps} className="text-orange-600" />;
-      case "deadline":
-        return <AlertCircle {...iconProps} className="text-orange-600" />;
-      case "grading":
-        return <CheckCircle2 {...iconProps} className="text-green-600" />;
-      default:
-        return <FileText {...iconProps} />;
-    }
+    return <CircleCheck size={18} className="text-gray-400" />;
   };
 
   const getActivityColor = (type: string) => {
@@ -80,7 +82,7 @@ const RecentActivity: React.FC<RecentActivityProps> = ({ data }) => {
                 onClick={() => setSelectedActivity(activity)}
                 onMouseEnter={() => setHoveredId(activity.id)}
                 onMouseLeave={() => setHoveredId(null)}
-                className={`w-full text-left border border-gray-200 rounded-lg p-3 transition-all group text-sm ${getActivityColor(activity.type)} ${
+                className={`w-full text-left border border-gray-200 rounded-lg p-2 transition-all group text-sm ${getActivityColor(activity.type)} ${
                   hoveredId === activity.id
                     ? "shadow-md"
                     : "hover:shadow-md"

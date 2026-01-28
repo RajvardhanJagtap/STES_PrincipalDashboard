@@ -27,7 +27,7 @@ const TopBar: React.FC<HeaderProps> = ({ user, onToggleSidebar }) => {
             <span className="text-white font-semibold text-sm">UR</span>
           </div>
           <div className="leading-tight">
-            <h1 className="text-base font-bold text-gray-900">STES UR</h1>
+            <h1 className="text-base font-bold text-gray-900">SAMPS UR</h1>
             <p className="text-xs text-gray-500">Lecturer Dashboard</p>
           </div>
         </div>
