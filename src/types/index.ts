@@ -143,6 +143,7 @@ export interface StatCardProps {
 
 export interface ClassCardProps {
   session: ClassSession;
+  index?: number;
 }
 
 export interface TodayClassesProps {

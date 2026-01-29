@@ -47,18 +47,27 @@ const UpcomingExams: React.FC<UpcomingExamsProps> = ({ data }) => {
       </div>
 
       <div className="space-y-2 flex-1 overflow-y-auto">
-        {data.exams.map((exam) => (
+        {data.exams.map((exam, index) => (
           <button
             key={exam.id}
             type="button"
             onClick={() => setOpenExamId(exam.id)}
-            className="group w-full text-left bg-gray-50 border border-gray-200 rounded-lg px-3 py-3.5 flex items-center justify-between gap-3 transition-all hover:bg-gray-100"
-            style={{ borderColor: exam.id === openExamId ? '#026892' : undefined, borderWidth: exam.id === openExamId ? '2px' : '1px' }}
+            className="group w-full text-left rounded-lg border p-3 border-gray-200 flex items-center justify-between gap-3 transition-all hover:bg-gray-100"
+            style={{ 
+              backgroundColor: index === 0 ? '#E8F4F8' : index === 1 ? '#F0F9FF' : '#E8F4F8',
+              borderColor: exam.id === openExamId ? '#026892' : undefined, 
+              borderWidth: exam.id === openExamId ? '2px' : '1px' 
+            }}
           >
             <div className="flex items-center gap-3 min-w-0 flex-1">
-              {/* Icon */}
-              <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-white border border-gray-200 flex items-center justify-center">
-                <ClipboardList size={18} style={{ color: '#026892' }} />
+              {/* Date Display */}
+              <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-white border border-gray-200 flex flex-col items-center justify-center">
+                <span className="text-[10px] font-semibold leading-none" style={{ color: '#026892' }}>
+                  {exam.month}
+                </span>
+                <span className="text-[13px] font-bold leading-none mt-0.5" style={{ color: '#026892' }}>
+                  {exam.day}
+                </span>
               </div>
               
               <div className="min-w-0 flex-1">

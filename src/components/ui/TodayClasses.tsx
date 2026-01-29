@@ -17,8 +17,8 @@ const TodayClasses: React.FC<TodayClassesProps> = ({ data }) => {
         </div>
       ) : (
         <div className="space-y-2 flex-1 overflow-y-auto">
-          {data.classes.map((session) => (
-            <ClassCard key={session.id} session={session} />
+          {data.classes.map((session, index) => (
+            <ClassCard key={session.id} session={session} index={index} />
           ))}
         </div>
       )}

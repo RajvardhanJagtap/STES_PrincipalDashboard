@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { ClassCardProps, ClassStatus } from "@/types";
 
-const ClassCard: React.FC<ClassCardProps> = ({ session }) => {
+const ClassCard: React.FC<ClassCardProps> = ({ session, index = 0 }) => {
   const getActionButtonStyle = (status: ClassStatus) => {
     if (status === "ongoing") {
       return "bg-[#026892] text-white border-transparent hover:opacity-95";
@@ -27,9 +27,8 @@ const ClassCard: React.FC<ClassCardProps> = ({ session }) => {
 
   return (
     <div
-      className={`rounded-lg border p-3 transition-all duration-200 ${
-        isNext ? "bg-blue-50 border-blue-200" : "bg-gray-50 border-gray-200"
-      }`}
+      className="rounded-lg border p-3 transition-all duration-200 border-gray-200"
+      style={{ backgroundColor: index % 2 === 0 ? "#E8F4F8" : "#F0F9FF" }}
     >
       <div className="flex items-center justify-between gap-3">
         <div className="min-w-0 flex-1">
