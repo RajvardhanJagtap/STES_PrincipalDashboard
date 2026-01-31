@@ -73,7 +73,7 @@ const QuickActions: React.FC = () => {
   };
 
   return (
-    <div className="bg-white border border-gray-100 rounded-xl p-6 shadow-sm h-[280px] flex flex-col">
+    <div className="bg-white border border-gray-100 rounded-xl p-6 shadow-sm h-[300px] flex flex-col">
       <h2 className="text-[19px] font-bold text-gray-900 mb-4">
         Quick Actions
       </h2>

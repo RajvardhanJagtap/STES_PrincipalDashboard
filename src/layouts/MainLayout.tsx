@@ -17,10 +17,14 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
+      {/* Topbar: fixed, full width, always at the top */}
       <Header user={currentUser} onToggleSidebar={toggleSidebar} />
-      <div className="flex flex-1 overflow-hidden">
-        <Sidebar isOpen={isSidebarOpen} onToggle={toggleSidebar} />
-        <main className="flex-1 lg:ml-64 min-h-[calc(100vh-64px)] flex flex-col overflow-y-auto scrollbar-hide scroll-smooth p-4">
+      {/* Sidebar below header, not beside */}
+      <div className="flex-1 flex flex-col lg:flex-row overflow-hidden">
+        <div className="lg:w-64 w-full flex-shrink-0">
+          <Sidebar isOpen={isSidebarOpen} onToggle={toggleSidebar} />
+        </div>
+        <main className="flex-1 min-h-[calc(100vh-64px)] flex flex-col overflow-y-auto scrollbar-hide scroll-smooth p-4">
           <div className="flex-1">{children}</div>
           <Footer />
         </main>

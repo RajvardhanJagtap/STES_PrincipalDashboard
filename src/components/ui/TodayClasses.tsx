@@ -4,7 +4,7 @@ import ClassCard from "@/components/ui/ClassCard";
 
 const TodayClasses: React.FC<TodayClassesProps> = ({ data }) => {
   return (
-    <div className="bg-white border border-gray-100 rounded-xl p-6 h-[280px] flex flex-col shadow-sm">
+    <div className="bg-white border border-gray-100 rounded-xl p-6 h-[300px] flex flex-col shadow-sm">
       <h2 className="text-[19px] font-bold text-gray-900 mb-4">
         Today&apos;s Schedule
       </h2>

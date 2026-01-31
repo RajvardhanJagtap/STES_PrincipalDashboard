@@ -21,13 +21,14 @@ const FinancialStatus: React.FC<FinancialStatusProps> = ({
   paidProgress,
   nextPaymentDue,
 }) => {
+  // Default to hidden: eye-off icon and masked amounts
   const [isVisible, setIsVisible] = useState(false);
   const clampedProgress = Math.max(0, Math.min(1, paidProgress));
 
   const toggleVisibility = () => setIsVisible(!isVisible);
 
   return (
-    <div className="bg-white border border-gray-100 rounded-xl p-6 h-[280px] flex flex-col shadow-sm">
+    <div className="bg-white border border-gray-100 rounded-xl p-6 h-[300px] flex flex-col shadow-sm">
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-[19px] font-bold text-gray-900">
           Financial Status
@@ -38,7 +39,7 @@ const FinancialStatus: React.FC<FinancialStatusProps> = ({
           className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
           aria-label={isVisible ? "Hide amounts" : "Show amounts"}
         >
-          {isVisible ? (
+          {!isVisible ? (
             <EyeOff className="w-5 h-5 text-gray-500" />
           ) : (
             <Eye className="w-5 h-5 text-gray-500" />
@@ -92,14 +93,12 @@ const FinancialStatus: React.FC<FinancialStatusProps> = ({
           <span className="text-gray-700 font-medium">{nextPaymentDue}</span>
         </div>
       </div>
-
       <button
         type="button"
-        className="mt-3 w-full h-20 rounded-lg text-white font-medium flex items-center justify-center gap-2 hover:opacity-95 active:scale-[0.99] transition text-base px-6"
-        style={{ backgroundColor: BRAND_BLUE }}
+        className="mt-4 w-full px-4 py-2 rounded-md bg-[#026892] flex items-center justify-center gap-2 text-white text-[15px] font-medium"
       >
-        <CreditCard className="w-5 h-5" />
-        Make Payment
+        <CreditCard className="w-4 h-4 text-white" />
+        <span>Make Payment</span>
       </button>
     </div>
   );
