@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { ArrowDownRight, ArrowUpRight } from "lucide-react";
 import { useAcademicContext } from "@/contexts/AcademicContext";
 import { collegePerformanceBySchools } from "@/data/principalDashboard.mock";
 
@@ -49,16 +48,10 @@ const CollegePerformanceBySchools: React.FC = () => {
                 <th className="hidden xl:table-cell text-left font-medium text-gray-700 px-4 py-3 whitespace-nowrap">
                   At-risk
                 </th>
-                <th className="text-left font-medium text-gray-700 px-4 py-3 whitespace-nowrap">
-                  Trend
-                </th>
               </tr>
             </thead>
             <tbody>
               {collegePerformanceBySchools.map((row) => {
-                const isUp = row.trendPp >= 0;
-                const trendText = `${isUp ? "+" : ""}${row.trendPp.toFixed(1)}pp`;
-
                 return (
                   <tr
                     key={row.id}
@@ -96,23 +89,6 @@ const CollegePerformanceBySchools: React.FC = () => {
 
                     <td className="hidden xl:table-cell px-4 py-4 text-gray-700 whitespace-nowrap">
                       {row.atRiskRate.toFixed(1)}%
-                    </td>
-
-                    <td className="px-4 py-4 whitespace-nowrap w-[16%]">
-                      <span
-                        className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold ${
-                          isUp
-                            ? "bg-emerald-100 text-emerald-700"
-                            : "bg-rose-100 text-rose-700"
-                        }`}
-                      >
-                        {isUp ? (
-                          <ArrowUpRight className="w-4 h-4" />
-                        ) : (
-                          <ArrowDownRight className="w-4 h-4" />
-                        )}
-                        {trendText}
-                      </span>
                     </td>
                   </tr>
                 );
