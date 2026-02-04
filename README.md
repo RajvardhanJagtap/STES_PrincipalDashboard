@@ -1,6 +1,6 @@
-# Student Dashboard - STES
+# Principal Dashboard - STES
 
-A professional, scalable student dashboard built with Next.js 14, TypeScript, and Tailwind CSS.
+A professional, scalable principal dashboard built with Next.js 14, TypeScript, and Tailwind CSS.
 
 ## 🚀 Getting Started
 
@@ -33,24 +33,21 @@ src/
 ├── app/
 │   ├── layout.tsx        → Root layout with metadata
 │   ├── page.tsx          → Main landing/dashboard page
-│   ├── academic/          → Academic route
-│   ├── accommodation/     → Accommodation route
-│   ├── documents/         → Documents route
-│   ├── finance/           → Finance route
-│   ├── library/           → Library route
-│   ├── profile/           → Profile route
-│   └── support-services/  → Support services route
+│   ├── academic/          → Academic affairs
+│   ├── grade-submissions/ → Grade submissions
+│   ├── summary-sheets/    → Summary sheets
+│   ├── curriculum/        → Curriculum
+│   ├── service-requests/  → Service requests
+│   └── reports/           → Reports
 │
 ├── components/
 │   ├── ui/               → Reusable UI components
 │   │   ├── WelcomeSection.tsx
 │   │   ├── StatCard.tsx
-│   │   ├── TodayClasses.tsx
+│   │   ├── NewRegisteredStudents.tsx
 │   │   ├── FinancialStatus.tsx
-│   │   ├── AssignmentsTasks.tsx
-│   │   ├── RecentGrades.tsx
-│   │   ├── AttendanceByCourse.tsx
-│   │   └── EnrolledModulesTable.tsx
+│   │   ├── RecentGradeSubmissions.tsx
+│   │   └── CollegePerformanceBySchools.tsx
 │   ├── common/           → Shared layout components
 │   │   ├── Header.tsx
 │   │   └── Sidebar.tsx
@@ -68,8 +65,8 @@ src/
 │   └── AcademicContext.tsx
 
 ├── data/
-│   ├── studentUser.ts
-│   └── studentDashboard.mock.ts
+│   ├── principalUser.ts
+│   └── principalDashboard.mock.ts
 │
 ├── styles/
 │   └── globals.css       → Global Tailwind styles
@@ -86,16 +83,14 @@ src/
 ### Header Component ✅
 
 - **Logo Section**: Dashboard branding
-- **Search Bar**: Full-width search with keyboard shortcut indicator (⌘K)
 - **Notifications**: Bell icon with badge counter
-- **Help Icon**: Quick access to help/support
-- **User Profile**: Name, role, and avatar with initials
+- **Academic Context**: Academic year + semester selectors
+- **User Profile**: Name and avatar with initials
 
 ### UI Components ✅
 
 - **Avatar**: Customizable size, shows initials or image
-- **IconButton**: Reusable button with badge support
-- **SearchBar**: Interactive search with focus states
+- **Dashboard cards & tables**: KPI cards and table-style summaries
 
 ## 🛠️ Technology Stack
 
@@ -114,10 +109,10 @@ src/
 
 ## 📝 Next Steps
 
-Suggested additions for the student dashboard:
+Suggested additions for the principal dashboard:
 
-- Student-specific route content (Academic, Finance, Library, Accommodation, Documents, Profile, Support)
-- Integrations/APIs for real student data (replace mocks)
+- Expand module pages (Academic Affairs, Grade Submissions, Summary Sheets, Curriculum, Service Requests, Reports)
+- Integrations/APIs for real institutional data (replace mocks)
 - Authentication and role-based access
 
 ## 🔧 Available Scripts
@@ -129,4 +124,4 @@ Suggested additions for the student dashboard:
 
 ## 📄 License
 
-Private project for STES Student Dashboard.
+Private project for STES Principal Dashboard.

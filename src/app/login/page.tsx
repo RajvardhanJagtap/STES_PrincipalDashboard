@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -22,26 +23,30 @@ export default function LoginPage() {
         <div className="text-center text-white max-w-lg">
           <div className="mb-8">
             <div className="w-32 h-32 mx-auto bg-white rounded-full flex items-center justify-center mb-6 p-4">
-              <img 
-                src="/images/ur-logo.jpeg" 
-                alt="University of Rwanda Logo" 
+              <Image
+                src="/images/ur-logo.jpeg"
+                alt="University of Rwanda Logo"
+                width={128}
+                height={128}
                 className="w-full h-full object-contain"
+                priority
               />
             </div>
             <h2 className="text-3xl font-bold mb-4">Excellence in Education</h2>
             <p className="text-blue-100 text-lg leading-relaxed">
-              Access your academic journey with our comprehensive student management platform. 
-              Track your progress, manage assignments, and stay connected with your educational goals.
+              Manage institutional performance with a unified principal
+              dashboard. Review key metrics, track outcomes, and handle
+              approvals in one place.
             </p>
           </div>
           <div className="grid grid-cols-2 gap-6 text-sm">
             <div className="bg-white/10 rounded-lg p-4">
               <div className="font-semibold mb-1">Academic Tracking</div>
-              <div className="text-blue-100">Monitor grades & attendance</div>
+              <div className="text-blue-100">Monitor outcomes & compliance</div>
             </div>
             <div className="bg-white/10 rounded-lg p-4">
               <div className="font-semibold mb-1">Financial Management</div>
-              <div className="text-blue-100">Track fees & payments</div>
+              <div className="text-blue-100">Track budgets & approvals</div>
             </div>
           </div>
         </div>
@@ -54,14 +59,19 @@ export default function LoginPage() {
             <h1 className="text-4xl font-bold text-gray-900 mb-3">
               Welcome back to
               <br />
-              <span className="text-[#026892]">Student Portal</span>
+              <span className="text-[#026892]">Principal Portal</span>
             </h1>
-            <p className="text-gray-600 text-lg">Student Academic Management Platform</p>
+            <p className="text-gray-600 text-lg">
+              Institution Management Dashboard
+            </p>
           </div>
 
           <form onSubmit={handleLogin} className="space-y-6">
             <div>
-              <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-3">
+              <label
+                htmlFor="email"
+                className="block text-sm font-semibold text-gray-700 mb-3"
+              >
                 Email or Username
               </label>
               <input
@@ -75,7 +85,10 @@ export default function LoginPage() {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-semibold text-gray-700 mb-3">
+              <label
+                htmlFor="password"
+                className="block text-sm font-semibold text-gray-700 mb-3"
+              >
                 Password
               </label>
               <div className="relative">
@@ -98,13 +111,18 @@ export default function LoginPage() {
             </div>
 
             <div className="text-left">
-              <a href="#" className="text-[#026892] hover:text-[#024a6b] text-sm font-medium">
+              <a
+                href="#"
+                className="text-[#026892] hover:text-[#024a6b] text-sm font-medium"
+              >
                 Forgot password?
               </a>
             </div>
 
             <div className="flex items-center justify-between py-2">
-              <span className="text-sm font-medium text-gray-700">Remember sign in details</span>
+              <span className="text-sm font-medium text-gray-700">
+                Remember sign in details
+              </span>
               <button
                 type="button"
                 onClick={() => setRememberMe(!rememberMe)}

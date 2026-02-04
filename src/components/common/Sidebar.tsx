@@ -3,15 +3,13 @@
 import { useMemo } from "react";
 import Link from "next/link";
 import {
-  ChevronRight,
   Home,
-  BookOpen,
-  CreditCard,
-  LibraryBig,
-  Building2,
-  LifeBuoy,
+  GraduationCap,
+  ClipboardList,
   FileText,
-  User,
+  BookOpen,
+  Clock,
+  FileBarChart,
 } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -26,23 +24,37 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { id: "dashboard", label: "Dashboard", icon: Home, href: "/" },
-  { id: "academic", label: "Academic", icon: BookOpen, href: "/academic" },
-  { id: "finance", label: "Finance", icon: CreditCard, href: "/finance" },
-  { id: "library", label: "Library", icon: LibraryBig, href: "/library" },
   {
-    id: "accommodation",
-    label: "Accommodation",
-    icon: Building2,
-    href: "/accommodation",
+    id: "academic-affairs",
+    label: "Academic Affairs",
+    icon: GraduationCap,
+    href: "/academic",
   },
   {
-    id: "support",
-    label: "Support Services",
-    icon: LifeBuoy,
-    href: "/support-services",
+    id: "grade-submissions",
+    label: "Grade Submissions",
+    icon: ClipboardList,
+    href: "/grade-submissions",
   },
-  { id: "documents", label: "Documents", icon: FileText, href: "/documents" },
-  { id: "profile", label: "Profile", icon: User, href: "/profile" },
+  {
+    id: "summary-sheets",
+    label: "Summary Sheets",
+    icon: FileText,
+    href: "/summary-sheets",
+  },
+  {
+    id: "curriculum",
+    label: "Curriculum",
+    icon: BookOpen,
+    href: "/curriculum",
+  },
+  {
+    id: "service-requests",
+    label: "Service Requests",
+    icon: Clock,
+    href: "/service-requests",
+  },
+  { id: "reports", label: "Reports", icon: FileBarChart, href: "/reports" },
 ];
 
 interface SidebarProps {
@@ -53,7 +65,11 @@ interface SidebarProps {
 const Sidebar = ({ isOpen, onToggle }: SidebarProps) => {
   const pathname = usePathname();
   const activeId = useMemo(() => {
-    const match = navItems.find((item) => item.href === pathname);
+    const match = navItems.find((item) => {
+      if (!item.href) return false;
+      if (item.href === "/") return pathname === "/";
+      return pathname === item.href || pathname.startsWith(`${item.href}/`);
+    });
     return match?.id || "dashboard";
   }, [pathname]);
 
@@ -75,11 +91,10 @@ const Sidebar = ({ isOpen, onToggle }: SidebarProps) => {
         )}
       >
         {/* Navigation */}
-        <nav className="p-4 space-y-1 h-full overflow-y-auto">
+        <nav className="p-4 space-y-2 h-full overflow-y-auto">
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = item.id === activeId;
-            const showChevron = item.id !== "dashboard";
 
             return (
               <Link
@@ -89,17 +104,14 @@ const Sidebar = ({ isOpen, onToggle }: SidebarProps) => {
                   if (isOpen) onToggle();
                 }}
                 className={cn(
-                  "w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-semibold transition-colors",
+                  "w-full flex items-center gap-3 px-4 py-3.5 rounded-2xl text-[15px] font-semibold transition-colors",
                   isActive
                     ? "bg-[#EAF7F1] text-[#026892]"
-                    : "text-gray-900 hover:bg-gray-50",
+                    : "text-slate-800 hover:bg-slate-50",
                 )}
               >
                 <Icon className="w-5 h-5" />
                 <span className="flex-1 text-left">{item.label}</span>
-                {showChevron && (
-                  <ChevronRight className="w-4 h-4 text-gray-400" />
-                )}
               </Link>
             );
           })}

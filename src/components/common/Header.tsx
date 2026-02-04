@@ -24,7 +24,10 @@ const TopBar: React.FC<HeaderProps> = ({ user, onToggleSidebar }) => {
 
   const semesterLabel = semester === "Fall" ? "semester one" : "semester two";
   const mobileSemesterLabel = semester === "Fall" ? "Sem 1" : "Sem 2";
-  const username = (user?.email || "john.doe").split("@")[0];
+  const rawUsername = (user?.email || "gatare@example.com").split("@")[0];
+  const username = rawUsername
+    ? rawUsername.charAt(0).toUpperCase() + rawUsername.slice(1)
+    : "Gatare";
 
   return (
     <header className="fixed top-0 z-50 w-full bg-white border-b border-gray-200">
@@ -86,9 +89,13 @@ const TopBar: React.FC<HeaderProps> = ({ user, onToggleSidebar }) => {
                 <SelectTrigger className="h-9 border-gray-200 text-sm font-medium px-2 max-w-[140px]">
                   <div className="flex items-center gap-2 min-w-0">
                     <span className="hidden sm:block truncate">
-                      <SelectValue placeholder="john.doe" />
+                      <SelectValue placeholder="Gatare" />
                     </span>
-                    <Avatar name={user?.name || "John"} size="sm" />
+                    <Avatar
+                      name={user?.name || "Gatare"}
+                      initials={user?.initials || "G"}
+                      size="sm"
+                    />
                   </div>
                 </SelectTrigger>
                 <SelectContent>
@@ -168,9 +175,13 @@ const TopBar: React.FC<HeaderProps> = ({ user, onToggleSidebar }) => {
               <SelectTrigger className="h-9 border-gray-200 text-sm font-medium px-2 sm:px-3 max-w-[180px]">
                 <div className="flex items-center gap-2 min-w-0">
                   <span className="hidden sm:block truncate">
-                    <SelectValue placeholder="john.doe" />
+                    <SelectValue placeholder="Gatare" />
                   </span>
-                  <Avatar name={user?.name || "John"} size="sm" />
+                  <Avatar
+                    name={user?.name || "Gatare"}
+                    initials={user?.initials || "G"}
+                    size="sm"
+                  />
                 </div>
               </SelectTrigger>
               <SelectContent>

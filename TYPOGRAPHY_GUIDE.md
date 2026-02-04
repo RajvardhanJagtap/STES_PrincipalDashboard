@@ -1,18 +1,18 @@
-# Typography System Documentation
+# Principal Dashboard Typography Guide
 
 ## Overview
 
-Standardized typography system implemented across all dashboard components ensuring consistent sizing and hierarchy.
+Standardized typography system used across the STES Principal Dashboard to ensure consistent sizing, hierarchy, and readability.
 
 ## Typography Classes (Defined in `src/styles/globals.css`)
 
 ### Heading Styles
 
-| Class        | Usage                          | Size             | Weight           | Example                          |
-| ------------ | ------------------------------ | ---------------- | ---------------- | -------------------------------- |
-| `heading-lg` | Section titles (cards, panels) | 18px (text-lg)   | Bold (font-bold) | "Today's Classes", "Assignments" |
-| `heading-md` | Component titles               | 16px (text-base) | Semibold         | Sidebar items, card titles       |
-| `heading-sm` | Item headings within cards     | 14px (text-sm)   | Semibold         | Alert titles, exam titles        |
+| Class        | Usage                          | Size             | Weight           | Example                                                      |
+| ------------ | ------------------------------ | ---------------- | ---------------- | ------------------------------------------------------------ |
+| `heading-lg` | Section titles (cards, panels) | 18px (text-lg)   | Bold (font-bold) | "Recent Grade Submissions", "College Performance by Schools" |
+| `heading-md` | Component titles               | 16px (text-base) | Semibold         | Sidebar items, card titles                                   |
+| `heading-sm` | Item headings within cards     | 14px (text-sm)   | Semibold         | Alert titles, exam titles                                    |
 
 ### Body & Text Styles
 
@@ -27,7 +27,7 @@ Standardized typography system implemented across all dashboard components ensur
 
 ### Dashboard Page
 
-- **Section Heading**: `heading-lg` (18px, bold) - "Today's Classes", "Assignments"
+- **Section Heading**: `heading-lg` (18px, bold) - "Recent Grade Submissions", "College Performance by Schools"
 - **Subtitle/Meta**: `muted-text` (12px, regular) - dates, descriptions
 - **Stats Title**: `caption-text` (12px, regular)
 - **Stats Value**: 24px (text-2xl, bold) - numerical values
@@ -92,21 +92,18 @@ All typography sizes are consistent across breakpoints. No responsive typography
 
 ## Components Updated (Jan 30, 2026)
 
+## Components Covered (Feb 2026)
+
 - ✅ Header
 - ✅ Sidebar
 - ✅ WelcomeSection
 - ✅ StatCard
 - ✅ QuickActions
-- ✅ TodayClasses
-- ✅ AssignmentsTasks
-- ✅ RecentGrades
-- ✅ AttendanceByCourse
-- ✅ AttendanceOverview
-- ✅ EnrolledModulesTable
+- ✅ NewRegisteredStudents
 - ✅ FinancialStatus
+- ✅ RecentGradeSubmissions
+- ✅ CollegePerformanceBySchools
 - ✅ Avatar
-- ✅ IconButton
-- ✅ SearchBar
 
 ## Future Consistency Checks
 

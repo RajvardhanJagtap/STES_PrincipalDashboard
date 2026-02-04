@@ -22,7 +22,7 @@ export interface Notification {
 export interface SearchResult {
   id: string;
   title: string;
-  type: "resource" | "student" | "course";
+  type: "resource" | "person" | "course";
   description?: string;
 }
 
@@ -39,6 +39,7 @@ export interface SidebarProps {
 
 export interface AvatarProps {
   name: string;
+  initials?: string;
   src?: string;
   size?: "sm" | "md" | "lg";
   className?: string;
