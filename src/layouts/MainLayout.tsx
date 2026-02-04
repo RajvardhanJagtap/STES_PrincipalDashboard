@@ -24,7 +24,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
         <div className="lg:w-64 w-full flex-shrink-0">
           <Sidebar isOpen={isSidebarOpen} onToggle={toggleSidebar} />
         </div>
-        <main className="flex-1 min-h-screen flex flex-col overflow-y-auto scrollbar-hide scroll-smooth px-4 sm:px-6 pb-6 pt-20">
+        <main className="flex-1 min-h-screen flex flex-col overflow-y-auto scrollbar-hide scroll-smooth px-4 sm:px-6 pb-6 pt-28 md:pt-20">
           <div className="flex-1">{children}</div>
           <Footer />
         </main>

@@ -66,10 +66,10 @@ const SelectTrigger = ({ children, className = "" }: SelectTriggerProps) => {
   return (
     <button
       onClick={() => setIsOpen(!isOpen)}
-      className={`flex items-center justify-between bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm font-medium text-gray-900 hover:bg-gray-50 transition-colors ${className}`}
+      className={`flex min-w-0 items-center bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm font-medium text-gray-900 hover:bg-gray-50 transition-colors ${className}`}
     >
-      {children}
-      <ChevronDown className="w-4 h-4 ml-1" />
+      <div className="flex-1 min-w-0 overflow-hidden">{children}</div>
+      <ChevronDown className="w-4 h-4 ml-2 shrink-0 text-gray-500" />
     </button>
   );
 };
