@@ -57,20 +57,20 @@ const RecentGradeSubmissions: React.FC = () => {
       </div>
 
       <div className="mt-4 border border-gray-200 rounded-xl overflow-hidden flex-1">
-        <div className="overflow-x-auto">
-          <table className="w-full text-sm">
+        <div className="w-full">
+          <table className="w-full text-sm table-fixed">
             <thead className="bg-white">
               <tr className="border-b border-gray-200">
                 <th className="text-left font-medium text-gray-700 px-4 py-3">
                   Group
                 </th>
-                <th className="text-left font-medium text-gray-700 px-4 py-3">
+                <th className="hidden sm:table-cell text-left font-medium text-gray-700 px-4 py-3 whitespace-nowrap">
                   Year
                 </th>
                 <th className="text-left font-medium text-gray-700 px-4 py-3">
                   Progress
                 </th>
-                <th className="text-center font-medium text-gray-700 px-4 py-3">
+                <th className="hidden md:table-cell text-center font-medium text-gray-700 px-4 py-3 whitespace-nowrap">
                   Modules
                 </th>
                 <th className="text-left font-medium text-gray-700 px-4 py-3">
@@ -84,15 +84,15 @@ const RecentGradeSubmissions: React.FC = () => {
                   key={row.group}
                   className="border-b border-gray-200 last:border-b-0"
                 >
-                  <td className="px-4 py-4 font-semibold text-gray-900 whitespace-nowrap">
+                  <td className="px-4 py-4 font-semibold text-gray-900 whitespace-normal break-normal w-[44%]">
                     {row.group}
                   </td>
-                  <td className="px-4 py-4 text-gray-700 whitespace-nowrap">
+                  <td className="hidden sm:table-cell px-4 py-4 text-gray-700 whitespace-nowrap w-[14%]">
                     {row.year}
                   </td>
-                  <td className="px-4 py-4">
-                    <div className="flex items-center gap-2 min-w-[140px]">
-                      <div className="h-2 w-20 rounded-full bg-slate-200 overflow-hidden">
+                  <td className="px-4 py-4 w-[26%]">
+                    <div className="flex items-center gap-2 min-w-0 flex-wrap">
+                      <div className="h-2 w-20 sm:w-24 rounded-full bg-slate-200 overflow-hidden">
                         <div
                           className="h-full rounded-full bg-[#026892]"
                           style={{ width: `${row.progress}%` }}
@@ -103,10 +103,10 @@ const RecentGradeSubmissions: React.FC = () => {
                       </span>
                     </div>
                   </td>
-                  <td className="px-4 py-4 text-center font-semibold text-gray-900 whitespace-nowrap">
+                  <td className="hidden md:table-cell px-4 py-4 text-center font-semibold text-gray-900 whitespace-nowrap w-[12%]">
                     {row.modules}
                   </td>
-                  <td className="px-4 py-4">
+                  <td className="px-4 py-4 whitespace-nowrap w-[16%]">
                     <span
                       className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-medium ${getStatusPill(row.status)}`}
                     >
