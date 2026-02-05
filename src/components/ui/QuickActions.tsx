@@ -48,29 +48,29 @@ const QuickActions: React.FC = () => {
     switch (variant) {
       case "purple":
         return {
-          bg: "bg-purple-100",
-          icon: "text-purple-600",
+          bg: "bg-purple-50",
+          icon: "text-purple-500",
           text: "text-purple-700",
           ring: "focus-visible:ring-purple-600/20",
         };
       case "green":
         return {
-          bg: "bg-emerald-100",
-          icon: "text-emerald-600",
+          bg: "bg-emerald-50",
+          icon: "text-emerald-500",
           text: "text-emerald-700",
           ring: "focus-visible:ring-emerald-600/20",
         };
       case "orange":
         return {
-          bg: "bg-orange-100",
-          icon: "text-orange-600",
+          bg: "bg-orange-50",
+          icon: "text-orange-500",
           text: "text-orange-800",
           ring: "focus-visible:ring-orange-600/20",
         };
       default:
         return {
-          bg: "bg-blue-100",
-          icon: "text-blue-600",
+          bg: "bg-blue-50",
+          icon: "text-blue-500",
           text: "text-blue-700",
           ring: "focus-visible:ring-blue-600/20",
         };
@@ -78,8 +78,8 @@ const QuickActions: React.FC = () => {
   };
 
   return (
-    <div className="bg-white border border-gray-100 rounded-xl p-6 shadow-sm h-auto sm:h-[300px] flex flex-col">
-      <h2 className="text-[19px] font-bold text-gray-900 mb-3">
+    <div className="bg-white border border-gray-100 rounded-xl p-5 shadow-sm h-auto sm:h-[280px] flex flex-col">
+      <h2 className="text-[18px] font-bold text-gray-900 mb-2.5">
         Quick Actions
       </h2>
       <div className="flex flex-col flex-1 gap-2">
@@ -89,7 +89,7 @@ const QuickActions: React.FC = () => {
           return (
             <Link key={action.id} href={action.href} className="block">
               <div
-                className={`flex items-center gap-3 px-4 py-3.5 rounded-2xl ${styles.bg} hover:brightness-[0.98] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 ${styles.ring}`}
+                className={`flex items-center gap-3 px-3.5 py-3 rounded-xl ${styles.bg} hover:brightness-[0.98] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 ${styles.ring}`}
               >
                 <div className={`flex-shrink-0 ${styles.icon}`}>
                   <span className="[&>svg]:h-5 [&>svg]:w-5">{action.icon}</span>

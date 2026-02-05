@@ -16,9 +16,149 @@ import Image from "next/image";
 interface HeaderProps {
   user?: User;
   onToggleSidebar?: () => void;
+  variant?: "default" | "principalDashboard";
 }
 
-const TopBar: React.FC<HeaderProps> = ({ user, onToggleSidebar }) => {
+const PrincipalDashboardHeader: React.FC<HeaderProps> = ({
+  user,
+  onToggleSidebar,
+}) => {
+  const { academicYear, semester, setAcademicYear, setSemester } =
+    useAcademicContext();
+
+  const semesterLabel = semester === "Fall" ? "semester one" : "semester two";
+  const mobileSemesterLabel = semester === "Fall" ? "Sem 1" : "Sem 2";
+
+  return (
+    <header className="fixed top-0 z-50 w-full bg-white border-b border-gray-200">
+      <div className="flex h-20 md:h-16 items-center justify-between px-4 sm:px-6">
+        {/* Brand (logo + title) + (mobile) menu */}
+        <div className="flex items-center gap-3 min-w-0">
+          <button
+            type="button"
+            onClick={onToggleSidebar}
+            className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+            aria-label="Open menu"
+          >
+            <Menu className="w-5 h-5 text-gray-700" />
+          </button>
+
+          <Image
+            src="/images/ur-logo.jpeg"
+            alt="UR Logo"
+            width={40}
+            height={40}
+            className="rounded-full flex-shrink-0"
+            priority
+          />
+
+          <div className="min-w-0 leading-tight">
+            <div className="text-[18px] sm:text-[20px] font-semibold tracking-normal text-[#026892] truncate">
+              SAMPS UR
+            </div>
+            <div className="text-xs sm:text-sm text-gray-500 truncate">
+              Principal Dashboard
+            </div>
+          </div>
+        </div>
+
+        {/* Actions + User */}
+        <div className="flex items-center gap-3 sm:gap-4 flex-shrink-0">
+          <button
+            className="relative p-2 rounded-md hover:bg-gray-100"
+            aria-label="Notifications"
+          >
+            <Bell className="w-5 h-5 text-gray-600" />
+            <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center font-semibold">
+              5
+            </span>
+          </button>
+
+          {/* Academic Year (mobile) */}
+          <div className="md:hidden">
+            <Select value={academicYear} onValueChange={setAcademicYear}>
+              <SelectTrigger className="h-8 w-[110px] border-gray-200 text-xs font-medium whitespace-nowrap">
+                <SelectValue placeholder="2024-2025" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="2024-2025">2024-2025</SelectItem>
+                <SelectItem value="2025-2026">2025-2026</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+
+          {/* Semester (mobile) */}
+          <div className="md:hidden">
+            <Select
+              value={mobileSemesterLabel}
+              onValueChange={(value) =>
+                setSemester(value === "Sem 1" ? "Fall" : "Spring")
+              }
+            >
+              <SelectTrigger className="h-8 w-[86px] px-2 border-gray-200 text-xs font-medium whitespace-nowrap">
+                <SelectValue placeholder="Sem 1" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="Sem 1">Sem 1</SelectItem>
+                <SelectItem value="Sem 2">Sem 2</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+
+          {/* Academic Year (desktop) */}
+          <div className="hidden md:block">
+            <Select value={academicYear} onValueChange={setAcademicYear}>
+              <SelectTrigger className="h-9 w-[120px] lg:w-[130px] border-gray-200 text-sm font-medium">
+                <SelectValue placeholder="2024-2025" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="2024-2025">2024-2025</SelectItem>
+                <SelectItem value="2025-2026">2025-2026</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+
+          {/* Semester (desktop) */}
+          <div className="hidden md:block">
+            <Select
+              value={semesterLabel}
+              onValueChange={(value) =>
+                setSemester(value === "semester one" ? "Fall" : "Spring")
+              }
+            >
+              <SelectTrigger className="h-9 w-[130px] lg:w-[150px] border-gray-200 text-sm font-medium capitalize">
+                <SelectValue placeholder="semester one" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="semester one">semester one</SelectItem>
+                <SelectItem value="semester two">semester two</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <div className="hidden sm:block text-right leading-tight">
+              <div className="text-sm font-semibold text-gray-900">
+                {user?.name || "Ignace Gatare"}
+              </div>
+              <div className="text-xs text-gray-500">
+                {user?.role || "Principal"}
+              </div>
+            </div>
+
+            <Avatar
+              name={user?.name || "Ignace Gatare"}
+              initials={user?.initials || "G"}
+              size="md"
+            />
+          </div>
+        </div>
+      </div>
+    </header>
+  );
+};
+
+const DefaultHeader: React.FC<HeaderProps> = ({ user, onToggleSidebar }) => {
   const { academicYear, semester, setAcademicYear, setSemester } =
     useAcademicContext();
 
@@ -195,4 +335,11 @@ const TopBar: React.FC<HeaderProps> = ({ user, onToggleSidebar }) => {
   );
 };
 
-export default TopBar;
+const Header: React.FC<HeaderProps> = (props) => {
+  if (props.variant === "principalDashboard") {
+    return <PrincipalDashboardHeader {...props} />;
+  }
+  return <DefaultHeader {...props} />;
+};
+
+export default Header;

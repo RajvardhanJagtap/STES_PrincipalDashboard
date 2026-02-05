@@ -8,9 +8,13 @@ import { currentPrincipal } from "@/data/principalUser";
 
 interface MainLayoutProps {
   children: React.ReactNode;
+  headerVariant?: "default" | "principalDashboard";
 }
 
-const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
+const MainLayout: React.FC<MainLayoutProps> = ({
+  children,
+  headerVariant = "default",
+}) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
@@ -18,7 +22,11 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   return (
     <div className="min-h-screen bg-white flex flex-col">
       {/* Topbar: fixed, full width, always at the top */}
-      <Header user={currentPrincipal} onToggleSidebar={toggleSidebar} />
+      <Header
+        user={currentPrincipal}
+        onToggleSidebar={toggleSidebar}
+        variant={headerVariant}
+      />
       {/* Sidebar below header, not beside */}
       <div className="flex-1 flex flex-col lg:flex-row overflow-hidden">
         <div className="lg:w-64 w-full flex-shrink-0">

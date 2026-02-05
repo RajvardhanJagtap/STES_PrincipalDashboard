@@ -13,7 +13,7 @@ import { principalDashboardStats } from "@/data/principalDashboard.mock";
 
 export default function HomePage() {
   return (
-    <MainLayout>
+    <MainLayout headerVariant="principalDashboard">
       <div className="w-full min-h-screen bg-white">
         <WelcomeSection userName={currentPrincipal.name} />
 

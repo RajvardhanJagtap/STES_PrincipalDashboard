@@ -5,6 +5,7 @@ import {
   ClipboardCheck,
   GraduationCap,
   TrendingUp,
+  User,
   Users,
 } from "lucide-react";
 
@@ -23,21 +24,14 @@ export const principalDashboardStats: StatCard[] = [
   },
   {
     id: "faculty-members",
-    title: "Faculty Members",
+    title: "Staff Members",
     value: "156",
-    icon: React.createElement(GraduationCap),
+    icon: React.createElement(User),
     iconColor: "green",
     change: {
-      text: "Student-Faculty Ratio: 17:1",
+      text: "current semester",
       variant: "positive",
     },
-  },
-  {
-    id: "graduation-rate",
-    title: "Graduation Rate",
-    value: "94.2%",
-    icon: React.createElement(BadgeCheck),
-    iconColor: "orange",
   },
   {
     id: "pending-approvals",
@@ -45,7 +39,14 @@ export const principalDashboardStats: StatCard[] = [
     value: "23",
     icon: React.createElement(ClipboardCheck),
     iconColor: "red",
-    change: { text: "Needs review today", variant: "warning" },
+    change: { text: "Needs Attention", variant: "warning" },
+  },
+  {
+    id: "graduation-rate",
+    title: "Graduation Rate",
+    value: "94.2%",
+    icon: React.createElement(GraduationCap),
+    iconColor: "orange",
   },
 ];
 

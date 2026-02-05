@@ -5,14 +5,14 @@ import { Activity, GraduationCap } from "lucide-react";
 
 const FinancialStatus: React.FC = () => {
   return (
-    <div className="bg-white border border-gray-100 rounded-xl p-6 h-auto sm:h-[300px] flex flex-col shadow-sm">
+    <div className="bg-white border border-gray-100 rounded-xl p-5 h-auto sm:h-[280px] flex flex-col shadow-sm">
       <div className="flex items-start gap-3">
         <div className="flex-shrink-0 h-9 w-9 rounded-lg bg-blue-50 text-blue-600 grid place-items-center">
           <GraduationCap className="h-[18px] w-[18px]" />
         </div>
 
         <div className="min-w-0">
-          <h2 className="text-[19px] font-bold text-gray-900 leading-tight">
+          <h2 className="text-[18px] font-bold text-gray-900 leading-tight">
             Enrolled in Semester
           </h2>
           <p className="text-sm text-gray-500 mt-1">
@@ -21,7 +21,7 @@ const FinancialStatus: React.FC = () => {
         </div>
       </div>
 
-      <div className="mt-6 flex items-center justify-between gap-4">
+      <div className="mt-5 flex items-center justify-between gap-4">
         <div className="min-w-0">
           <div className="text-3xl font-bold text-[#026892] leading-none">
             2847
