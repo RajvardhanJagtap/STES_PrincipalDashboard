@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { TrendingUp, Users } from "lucide-react";
+import { TrendingUp } from "lucide-react";
 
 const NewRegisteredStudents: React.FC = () => {
   return (
@@ -43,3 +43,4 @@ const NewRegisteredStudents: React.FC = () => {
 };
 
 export default NewRegisteredStudents;
+
